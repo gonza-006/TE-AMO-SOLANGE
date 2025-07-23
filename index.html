@@ -34,17 +34,20 @@
     }
   </style>
 </head>
-<body onclick="explotarCorazones(event)">
+<body ontouchstart="explotarCorazones(event)" onclick="explotarCorazones(event)">
   <h1>TE AMO SOLANGE 💖</h1>
 
   <script>
     function explotarCorazones(e) {
+      let x = e.clientX || e.touches[0].clientX;
+      let y = e.clientY || e.touches[0].clientY;
+
       for (let i = 0; i < 20; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
         heart.innerText = '💖';
-        heart.style.left = (e.clientX + Math.random() * 100 - 50) + 'px';
-        heart.style.top = (e.clientY + Math.random() * 100 - 50) + 'px';
+        heart.style.left = (x + Math.random() * 100 - 50) + 'px';
+        heart.style.top = (y + Math.random() * 100 - 50) + 'px';
         heart.style.fontSize = (Math.random() * 24 + 12) + 'px';
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 2000);
